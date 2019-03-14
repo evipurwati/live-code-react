@@ -5,6 +5,7 @@ const apiKey = "31e59cd2d87747ddbfb14d1c08412411";
 const baseUrl = "https://newsapi.org/v2/";
 const urlHeadline = "https://newsapi.org/v2/top-headlines?country=id&apiKey=31e59cd2d87747ddbfb14d1c08412411";
 const urlNews = "https://newsapi.org/v2/everything?q=rampage&apiKey=31e59cd2d87747ddbfb14d1c08412411";
+const urlMovie = "https://api-todofancy.herokuapp.com/api/movies";
 
 const initialState = {
     apiKey: "",
@@ -13,8 +14,8 @@ const initialState = {
     full_name: "",
     username: "",
     is_login: false,
-    listNews: [],
-    blog: []
+    listMovie: []
+    // blog: []
 };
 
 export const store = createStore(initialState)
@@ -63,22 +64,22 @@ export const actions = store => ({
         }
       },
 
-    listNews5: async state => {
+    listMovie5: async state => {
         await axios
-        .get(urlHeadline).then(function(response){
-            store.setState({listNews : response.data.articles});
-        }).catch(function(error){
-            console.log(error);
-        })},
-
-    blog5: async state => {
-        await axios
-        .get(urlNews).then(function(response){
-            store.setState({blog : response.data.articles});
-            console.log('response data', response.data.articles);
+        .get(urlMovie).then(function(response){
+            store.setState({listMovie : response.data.movies});
         }).catch(function(error){
             console.log(error);
         })}
+
+    // blog5: async state => {
+    //     await axios
+    //     .get(urlNews).then(function(response){
+    //         store.setState({blog : response.data.articles});
+    //         console.log('response data', response.data.articles);
+    //     }).catch(function(error){
+    //         console.log(error);
+    //     })}
     
 
 })
